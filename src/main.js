@@ -2,6 +2,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { userSessionStore } from './stores/userSessionStore.js'
+import './assets/colors.css' // Import your color variables
 
 
 import App from './App.vue'

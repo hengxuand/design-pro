@@ -1,0 +1,27 @@
+:root {
+    /* Background Colors */
+    --color-soft-cream: #f9f5ec;         /* Page background */
+    --color-warm-beige: #f3e8dc;         /* Sidebar or card background */
+    --color-light-sand: #e9dccf;         /* Secondary background sections */
+
+    /* Text Colors */
+    --color-text-main: #4a3f35;          /* Primary text color */
+    --color-text-secondary: #766d61;    /* Secondary text */
+    --color-text-muted: #a29c91;        /* Low-priority or placeholder text */
+
+    /* Accent Colors */
+    --color-accent: #e6a97c;             /* Buttons, links, highlights */
+    --color-accent-hover: #d99267;      /* Hover states for accents */
+
+    /* Border Colors */
+    --color-border: #d4c6b4;            /* Component borders */
+    --color-border-light: #e3d8cc;      /* Subtle, light borders */
+
+    /* Shadows */
+    --color-shadow: rgba(0, 0, 0, 0.1);  /* Soft shadows for depth */
+
+    /* Alert Colors */
+    --color-error: #f4b6b2;             /* Error indicators */
+    --color-warning: #f4d7b2;           /* Warning indicators */
+    --color-success: #bde4c4;           /* Success messages */
+}

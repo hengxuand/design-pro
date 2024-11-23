@@ -8,6 +8,7 @@ const userSession = userSessionStore()
 
 const handleLogout = async () => {
   try {
+    console.log('logout')
     await userSession.logout() // Make sure you have this action in your store
     await router.push(PATHS.LOGIN)
   } catch (error) {
@@ -17,31 +18,44 @@ const handleLogout = async () => {
 </script>
 
 <template>
-  <div>
-    <div class="sidebar">
-      <ul class="nav-list">
-        <li class="nav-item active">Subscriber</li>
-        <li class="nav-item">Quotes</li>
-        <li class="nav-item">News</li>
-        <li class="nav-item">Email</li>
-        <li class="nav-item">Advisor</li>
-      </ul>
+  <div class="sidebar">
+    <div class="top-section">
+      <div class="logo">
+        <img src="../assets/logo.jpg" height="80" width="128" />
+      </div>
+      <div>
+        <ul class="nav-list">
+          <li class="nav-item active">Quote</li>
+          <li class="nav-item">Submit a request</li>
+          <li class="nav-item">My Sample</li>
+        </ul>
+      </div>
     </div>
     <div class="sign-out-container">
-      <button class="sign-out-btn">Sign Out</button>
+      <button class="sign-out-btn" @click="handleLogout">Sign Out</button>
     </div>
   </div>
 </template>
-
 <style scoped>
 .sidebar {
-  width: 250px;
+  display: flex;
   height: 100vh;
-  background-color: #2b2b2b;
-  color: white;
+  flex-direction: column;
+  justify-content: space-between; /* Push sign out button to bottom */
+  background-color: var(--color-warm-beige); /* Sidebar tone */
+  padding: 1rem;
+}
+
+.top-section {
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
+}
+
+.logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: var(--color-text-main); /* Main text color for logo */
 }
 
 .nav-list {
@@ -51,51 +65,49 @@ const handleLogout = async () => {
 }
 
 .nav-item {
-  padding: 15px 20px;
+  padding: 10px 10px;
   cursor: pointer;
   font-size: 16px;
+  border-radius: 10px;
+  margin: 10px;
+  color: var(--color-text-secondary); /* Main text color for readability */
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .nav-item:hover {
-  background-color: #1f1f1f;
+  background-color: var(--color-light-sand); /* Soft card section */
 }
 
 .nav-item.active {
-  background-color: #4caf50;
+  background-color: var(--color-accent); /* High contrast for active state */
   font-weight: bold;
+  color: --color-text-main; /* White text to contrast with black background */
 }
 
 .sign-out-container {
   display: flex;
-  justify-content: flex-end; /* Align button to the right */
+  justify-content: center; /* Center sign-out button */
   padding: 10px 20px;
-  background-color: #f9f9f9;
+  margin: 20px 0;
 }
 
 .sign-out-btn {
-  background-color: #4caf50; /* Green color */
-  color: white;
+  background-color: var(--color-border-light); /* Light gray tone to make it distinct */
+  color: var(--color-text-main); /* Main text color for readability */
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  transition:
-    background-color 0.3s,
-    transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
 }
 
 .sign-out-btn:hover {
-  background-color: #45a049; /* Slightly darker green */
-  transform: scale(1.05); /* Button grows slightly on hover */
+  background-color: var(--color-accent-hover); /* Highlight color on hover for emphasis */
+  transform: scale(1.05); /* Slightly larger on hover */
 }
 
 .sign-out-btn:active {
-  background-color: #3e8e41; /* Even darker green for active state */
   transform: scale(0.95); /* Button shrinks slightly on click */
-}
-
-.sign-out-btn:focus {
-  outline: 2px solid #4caf50; /* Optional focus outline for accessibility */
 }
 </style>

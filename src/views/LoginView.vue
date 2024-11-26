@@ -24,8 +24,8 @@ const signIn = async () => {
   <div class="login-page">
     <h1>Welcome to DesignPro</h1>
 
-    <div class="login-form">
-      <input class="email-input" type="email" placeholder="Email" v-model="email" />
+    <form class="login-form" @submit.prevent="signIn">
+      <input class="email-input" type="email" placeholder="Email" autofocus v-model="email" />
 
       <div class="password-container">
         <input
@@ -38,12 +38,12 @@ const signIn = async () => {
           {{ showPassword ? 'Hide' : 'Show' }}
         </span>
       </div>
-      <button class="login-btn" @click="signIn">Sign in</button>
+      <button class="login-btn" @click="signIn">Sign In</button>
       <!-- <div>
         Don't have an account?
         <router-link to="/register">Register</router-link>
       </div> -->
-    </div>
+    </form>
   </div>
 </template>
 
@@ -97,10 +97,22 @@ const signIn = async () => {
   font-weight: bold;
 }
 .login-btn {
-  background-color: black;
-  color: white;
+  background-color: var(--color-accent);
+  color: var(--color-primary-text);
   padding: 10px;
   border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
+  border: none;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+}
+
+.login-btn:hover {
+  background-color: var(--color-accent-hover); /* Highlight color on hover for emphasis */
+  transform: scale(1.01); /* Slightly larger on hover */
+}
+
+.login-btn:active {
+  transform: scale(0.95); /* Button shrinks slightly on click */
 }
 </style>

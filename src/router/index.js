@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import { userSessionStore } from '../stores/userSessionStore'
+import DashboardView from '@/views/DashboardView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,9 +19,31 @@ const router = createRouter({
     },
     {
       path: '/dashboard',
-      name: 'dashboard',
-      component: () => import('@/views/DashboardView.vue'),
-      meta: { needsAuth: true },
+      name: 'Dashboard',
+      meta: { needsAuth: true},
+      component: DashboardView,
+      redirect: '/dashboard/quotes', // Set /dashboard to redirect to /dashboard/quotes
+      children: [
+        {
+          path: 'quotes',
+          name: 'quotes',
+          component: () => import('@/components/QuoteComponent.vue'),
+        },
+        {
+          path: 'submit-request',
+          name: 'submit-request',
+          component: () => import('@/components/SubmitRequestComponent.vue'),
+        },
+        {
+          path: 'samples',
+          name: 'samples',
+          component: () => import('@/components/SampleComponent.vue'),
+        },
+        {
+          path: '/:pathMatch(.*)*', // Catch-all route
+          redirect: '/dashboard' // Redirect any unknown paths to /dashboard
+        }
+      ],
     },
   ],
 })
@@ -31,7 +54,7 @@ router.beforeEach(async (to, from, next) => {
 
   // Wait a brief moment for auth state to stabilize if needed
   if (userSession.isInitializing) {
-    await new Promise(resolve => setTimeout(resolve, 100))
+    await new Promise((resolve) => setTimeout(resolve, 100))
   }
 
   if (needsAuth && !userSession.isAuthenticated) {

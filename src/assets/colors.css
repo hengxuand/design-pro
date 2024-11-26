@@ -1,17 +1,26 @@
 :root {
     /* Background Colors */
-    --color-soft-cream: #f9f5ec;         /* Page background */
-    --color-warm-beige: #f3e8dc;         /* Sidebar or card background */
-    --color-light-sand: #e9dccf;         /* Secondary background sections */
+    --color-primary-background: #ffffff;         /* Page background */
+    --color-secondary-background: #fbf9f5;         /* Sidebar or card background */
 
     /* Text Colors */
-    --color-text-main: #4a3f35;          /* Primary text color */
-    --color-text-secondary: #766d61;    /* Secondary text */
-    --color-text-muted: #a29c91;        /* Low-priority or placeholder text */
+    --color-primary-text: #101518;          /* Primary text color */
+    --color-secondary-text: #7b96aa;    /* Secondary text */
+    --color-tertiary-text: #93999e;
+
+    --color-primary: #507583;
+    --color-secondardy: #18aa99;
+    --color-tertiary: #928163;
+    --color-alternative: #ede8df;
+
+    --color-accent1: #4f507583;
+    --color-accent2: #4D18AA99;
+    --color-accent3: #4d928163;
+    --color-accent4: #b2ffffff;
 
     /* Accent Colors */
-    --color-accent: #e6a97c;             /* Buttons, links, highlights */
-    --color-accent-hover: #d99267;      /* Hover states for accents */
+    --color-accent: #dbded7;             /* Buttons, links, highlights */
+    --color-accent-hover: #b5beb3;      /* Hover states for accents */
 
     /* Border Colors */
     --color-border: #d4c6b4;            /* Component borders */
@@ -21,7 +30,8 @@
     --color-shadow: rgba(0, 0, 0, 0.1);  /* Soft shadows for depth */
 
     /* Alert Colors */
-    --color-error: #f4b6b2;             /* Error indicators */
-    --color-warning: #f4d7b2;           /* Warning indicators */
-    --color-success: #bde4c4;           /* Success messages */
+    --color-error: #c4454d;             /* Error indicators */
+    --color-warning: #f3c344;           /* Warning indicators */
+    --color-success: #16857b;           /* Success messages */
+    --color-info: #ffffff;           /* Success messages */
 }

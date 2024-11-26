@@ -1,8 +1,9 @@
 <script setup>
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { userSessionStore } from '@/stores/userSessionStore.js'
 import { PATHS } from '@/constants/paths.js'
 
+const route = useRoute()
 const router = useRouter()
 const userSession = userSessionStore()
 
@@ -15,6 +16,12 @@ const handleLogout = async () => {
     console.error('Logout failed:', error)
   }
 }
+const navigate = (path) => {
+  router.push(path)
+}
+const isActive = (path) => {
+  return route.path === path
+}
 </script>
 
 <template>
@@ -25,9 +32,9 @@ const handleLogout = async () => {
       </div>
       <div>
         <ul class="nav-list">
-          <li class="nav-item active">Quote</li>
-          <li class="nav-item">Submit a request</li>
-          <li class="nav-item">My Sample</li>
+          <li class="nav-item" :class="{ active: isActive('/dashboard/quotes') }" @click="navigate('/dashboard/quotes')">Quotes</li>
+          <li class="nav-item" :class="{ active: isActive('/dashboard/submit-request') }" @click="navigate('/dashboard/submit-request')">Submit a request</li>
+          <li class="nav-item" :class="{ active: isActive('/dashboard/samples') }" @click="navigate('/dashboard/samples')">My Sample</li>
         </ul>
       </div>
     </div>
@@ -35,15 +42,17 @@ const handleLogout = async () => {
       <button class="sign-out-btn" @click="handleLogout">Sign Out</button>
     </div>
   </div>
+
 </template>
+
 <style scoped>
 .sidebar {
   display: flex;
   height: 100vh;
   flex-direction: column;
   justify-content: space-between; /* Push sign out button to bottom */
-  background-color: var(--color-warm-beige); /* Sidebar tone */
-  padding: 1rem;
+  background-color: var(--color-secondary-background); /* Sidebar tone */
+  padding: 10px 10px;
 }
 
 .top-section {
@@ -55,7 +64,7 @@ const handleLogout = async () => {
   width: 100%;
   display: flex;
   justify-content: center;
-  color: var(--color-text-main); /* Main text color for logo */
+  color: var(--color-primary-text); /* Main text color for logo */
 }
 
 .nav-list {
@@ -68,20 +77,20 @@ const handleLogout = async () => {
   padding: 10px 10px;
   cursor: pointer;
   font-size: 16px;
-  border-radius: 10px;
-  margin: 10px;
-  color: var(--color-text-secondary); /* Main text color for readability */
-  transition: background-color 0.3s ease; /* Smooth transition */
+  border-radius: 5px;
+  margin: 10px 0;
+  color: var(--color-secondary-text); /* Main text color for readability */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effects */
 }
 
 .nav-item:hover {
-  background-color: var(--color-light-sand); /* Soft card section */
+  background-color: var(--color-alternative); /* Soft card section */
 }
 
 .nav-item.active {
   background-color: var(--color-accent); /* High contrast for active state */
+  color: var(--color-primary-text); /* White text to contrast with black background */
   font-weight: bold;
-  color: --color-text-main; /* White text to contrast with black background */
 }
 
 .sign-out-container {
@@ -92,8 +101,8 @@ const handleLogout = async () => {
 }
 
 .sign-out-btn {
-  background-color: var(--color-border-light); /* Light gray tone to make it distinct */
-  color: var(--color-text-main); /* Main text color for readability */
+  background-color: var(--color-accent); /* Light gray tone to make it distinct */
+  color: var(--color-tertiary-text); /* Main text color for readability */
   border: none;
   padding: 10px 20px;
   border-radius: 5px;

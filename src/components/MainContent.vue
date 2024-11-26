@@ -1,15 +1,6 @@
 <template>
   <div class="main-content">
-    <h1>Quotes</h1>
-    <div class="card-container">
-      <div class="card" v-for="item in 8" :key="item">
-        <h3>Sam Justin</h3>
-        <p><strong>Phone:</strong> 626 819 9328</p>
-        <p><strong>Email:</strong> susi912@gmail.com</p>
-        <p><strong>City:</strong> Los Angeles, CA, United States, 90001</p>
-        <p>01:25PM<br />07/18/2021</p>
-      </div>
-    </div>
+    <RouterView :key="$route.fullPath"/>
   </div>
 </template>
 
@@ -17,7 +8,6 @@
 .main-content {
   flex: 1;
   padding: 20px;
-  background-color: #cc6161;
 }
 
 h1 {

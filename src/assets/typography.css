@@ -1,0 +1,23 @@
+:root {
+    /* Font Families */
+    --font-primary: 'Roboto', sans-serif;  /* Primary font for most content */
+    --font-secondary: 'Montserrat', sans-serif; /* Secondary font for headings or accents */
+
+    /* Font Sizes */
+    --font-size-small: 12px;   /* Small text */
+    --font-size-base: 16px;    /* Base text */
+    --font-size-large: 20px;   /* Slightly larger text */
+    --font-size-heading: 28px; /* Headings */
+    --font-size-title: 36px;   /* Titles */
+
+    /* Font Weights */
+    --font-weight-light: 300;    /* Light weight */
+    --font-weight-normal: 400;   /* Normal weight */
+    --font-weight-semibold: 600; /* Semi-bold weight */
+    --font-weight-bold: 700;     /* Bold weight */
+
+    /* Line Heights */
+    --line-height-small: 1.2;    /* For small text */
+    --line-height-base: 1.5;     /* Base text */
+    --line-height-large: 1.75;   /* For large blocks of text */
+}

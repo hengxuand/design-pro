@@ -3,7 +3,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { userSessionStore } from './stores/userSessionStore.js'
 import './assets/colors.css' // Import your color variables
-
+import './assets/typography.css' // Import the typography styles here
 
 import App from './App.vue'
 import router from './router'
